@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Article List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Article List</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Content</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="article : ${articleList}">
+            <td th:text="${article.id}"></td>
+            <td th:text="${article.title}"></td>
+            <td th:text="${article.content}"></td>
+            <td>
+                <a th:href="@{/articles/{id}/edit(id=${article.id})}" class="btn btn-primary" style="background-color: blue; color: white;">Edit</a>
+                <a th:href="@{/articles/{id}/delete(id=${article.id})}" class="btn btn-danger" style="background-color: blue; color: white;">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/articles}" style="color: blue;">Go to Article List</a>
+</div>
+
+<script src="/js/articles.js"></script>
+</body>
+</html>
